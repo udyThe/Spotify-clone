@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="./assets/logo.png">
+    <title>Playlist 1</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="playlist1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    
+</style>
+
+<body>
+    <div class="main">
+        <div class="sidebar">
+            <div class="nav">
+                <div class="nav-option" style="opacity: 1;">
+                    <i class="fa-solid fa-house" onclick="location.href='index.html'"></i>
+                    <a href="index.html">Home</a>
+                </div>
+                <div class="nav-option">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="#">search</a>
+                </div>
+            </div>
+            <div class="library">
+                <div class="options">
+                    <div class="lib-option nav-option">
+                        <img src="./assets/library_icon.png" alt="library_icon">
+                        <a href="#">Your Library</a>
+                    </div>
+                    <div class="icons">
+                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="lib-box">
+                    <div class="box">
+                        <p class="box-p1">Create your own playlist</p>
+                        <p class="box-p2">It's easy, we'll help you</p>
+                        <button class="badge">Create playlist</button>
+                    </div>
+                    <div class="box">
+                        <p class="box-p1">Let's find some podcasts to follow</p>
+                        <p class="box-p2">We'll keep you updated on new episodes</p>
+                        <button class="badge">Browse podcasts</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="sticky-nav">
+                <div class="sticky-nav-icons">
+                    <img src="./assets/backward_icon.png" alt="">
+                    <img src="./assets/forward_icon.png" class="hide" alt="">
+                </div>
+                <div class="sticky-nav-options">
+                    <button class="badge nav-item hide">Explore Premium</button>
+                    <button class="badge nav-item dark-badge"><i class="fa-solid fa-circle-arrow-down"
+                            style="margin-right: 4px;"></i>Install App</button>
+                    <i class="fa-regular fa-user"></i>
+                </div>
+            </div>
+            <div id="banner">
+                <img src="assets/card1img.jpeg" class="banner-img" alt="image">
+                <div id="banner-content">
+                    <h1>Top 50</h1>
+                    <p>Blissed out beats and head nodding grooves </p>
+                </div>
+            </div>
+
+            <div class="playlist-func" ></div>
+            <div class="songs">
+                <div class="title-1">
+                    <div><p>#</p></div>
+                    <div><p>Title</p></div>
+                    <div><p>Album</p></div>
+                    <div><p>Date addded</p></div>
+                    <div><p>Duration</p></div>
+                </div>
+                <audio src="" id="audio" ontimeupdate="updateprogressbar()" ></audio>
+                <div class="title"  onclick="playsong('assets/abc.mp3')">
+
+                    <div><p>1</p></div>
+                    <div><p>has has</p></div>
+                    <div><p>ads</p></div>
+                    <div><p>as</p></div>
+                    <div><p>asjkdnsjkf</p></div>
+                </div>
+                <div class="title" onclick="playsong('assets/abc2.mp3')">
+
+                    <!-- <p>2</p>
+                    <p>Bachke Bachke</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p> -->
+
+                    <div><p>2</p></div>
+                    <div><p>bachke bachke</p></div>
+                    <div><p>sdfkhsf</p></div>
+                    <div><p>21232</p></div>
+                    <div><p>djfsdc</p></div>
+                </div>
+            </div>
+
+            <div>
+
+            </div>
+
+            <div class="footer">
+                <div class="line"></div>
+            </div>
+
+        </div>
+        <div class="musicplayer">
+            <div class="album"></div>
+            <div class="player">
+                <div class="player-controls">
+                    <img src="assets/player_icon1.png" class="player-control-icon" alt="">
+                    <img src="assets/player_icon2.png" class="player-control-icon" alt="">
+                    <img src="assets/player_icon3.png" id="playbutton" class="player-control-icon play-button" onclick="playpause();    " alt="">
+                    <img src="assets/player_icon4.png" class="player-control-icon" alt="">
+                    <img src="assets/player_icon5.png" class="player-control-icon" alt="">
+                </div>
+                <div class="playback-bar">
+                    <span class="curr-time">0.00</span>
+                    <input type="range" min="0" max="100" class="progress-bar" id="progressbar" value="0" step="0.01" onchange="seeksong()">
+                    <span class="tot-time">3.33</span>
+                </div>
+            </div>
+            <div class="controls"></div>
+        </div>
+    </div>
+
+    <script>
+        
+        
+            function playsong(audioname){
+                var audio = document.getElementById("audio")
+                var button = document.getElementById('playbutton')
+                var pause ='assets/pasue.png'
+                button.src =  pause
+                audio.src = audioname
+                audio.play();
+            }
+            
+            
+            
+            function playpause(){
+                var button = document.getElementById('playbutton')
+                var audio = document.getElementById("audio")
+                var pause ='assets/pasue.png'
+                var play ='assets/player_icon3.png'
+                if (audio.paused ){
+                    audio.play()
+                    button.src =  pause
+                    
+                }
+                else{
+                    audio.pause()
+                    button.src =  play
+                }
+                
+            }
+            
+            function updateprogressbar(){
+                var audio = document.getElementById("audio")
+                var progressbar = document.getElementById("progressbar")
+                progressbar.value = (audio.currentTime/audio.duration)*100
+                
+                
+            }
+            
+            function seeksong() {
+                var audio = document.getElementById("audio")
+                var progressbar = document.getElementById("progressbar")
+                audio.currentTime = (progressbar.value/100) * audio.duration;
+
+            }
+
+        
+    </script>
+</body>
+
+</html>
